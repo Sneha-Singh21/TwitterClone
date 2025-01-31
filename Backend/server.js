@@ -3,8 +3,9 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 
-import authRoutes from "./routes/auth.routes.js";
-import userRoutes from "./routes/user.routes.js";
+import authRouter from "./routes/auth.routes.js";
+import userRouter from "./routes/user.routes.js";
+import postRouter from "./routes/post.routes.js";
 
 import connectMongoDB from "./db/connectMongoDB.js";
 
@@ -25,8 +26,9 @@ app.use(express.urlencoded({ extended: true })); // to parse formdata(urlencoded
 app.use(cookieParser());
 
 // api endpoints
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
+app.use("/api/posts", postRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
